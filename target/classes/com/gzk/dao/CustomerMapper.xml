@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzk.dao.CustomerMapper">
+
+    <insert id="addCustomer" parameterType="Customer">
+        insert into customer(username,password,email)
+        values(#{username},#{password},#{email})
+    </insert>
+
+    <update id="updateCustomer" parameterType="Customer">
+        update customer
+        set password = #{password}
+        where username = #{username}
+    </update>
+
+    <select id="queryCustomerById" parameterType="int" resultType="Customer">
+        select  * from customer   where id = #{id}
+    </select>
+
+    <select id="queryAllCustomer" resultType="Customer">
+        select * from customer
+    </select>
+
+    <select id="queryCustomerByName" resultType="Customer">
+        select  * from customer   where username = #{username}
+    </select>
+
+</mapper>
